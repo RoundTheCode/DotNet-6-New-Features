@@ -36,4 +36,9 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.MapGet("team/{id}", (ITeamService teamService, int id) => teamService.Read(id));
+app.MapPost("team", (ITeamService teamService, Team team) => teamService.Create(team));
+app.MapPut("team/{id}", (ITeamService teamService, int id, Team team) => teamService.Update(id, team));
+app.MapDelete("team/{id}", (ITeamService teamService, int id) => teamService.Delete(id));
+
 app.Run();
